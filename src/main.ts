@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'element-plus/es/components/message/style/css'
 
-console.log(123)
+const app = createApp(App)
 
-createApp(App).mount('#app')
+app.mount('#app')
