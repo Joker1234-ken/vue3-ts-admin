@@ -11,6 +11,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.26.0",
     "element-plus": "^2.0.2",
     "lodash-es": "^4.17.21",
     "vue": "^3.2.25",
@@ -20,6 +22,7 @@
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
     "@types/lodash-es": "^4.17.6",
+    "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
     "@vitejs/plugin-vue": "^2.2.0",

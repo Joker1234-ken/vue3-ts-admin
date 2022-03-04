@@ -1,7 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'element-plus/es/components/message/style/css'
-
+import { router } from './router'
+import { setupPermission } from './router/permission'
 const app = createApp(App)
 
-app.mount('#app')
+app.use(router)
+
+setupPermission(router)
+
+router.isReady().then(() => app.mount('#app'))
