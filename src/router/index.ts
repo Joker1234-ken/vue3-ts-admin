@@ -1,50 +1,25 @@
+import { App } from 'vue'
 import {
   createRouter,
   createWebHistory,
   Router,
   RouteRecordRaw
 } from 'vue-router'
+import { setupPermission } from './permission'
+import appMain from './layout'
 
-const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
+  appMain([
+    {
+      path: '/',
+      meta: { title: '首页' },
+      component: () => import('../views/home/index.vue')
+    }
+  ]),
   {
-    path: '/',
-    component: () => import('src/layout/index.vue'),
-    meta: { hidden: false },
-    children: [
-      {
-        path: 'view',
-        component: () => import('src/layout/view/index.vue'),
-        meta: { title: '测试1' },
-        children: [
-          {
-            path: 'view',
-            component: () => import('src/layout/view/index.vue'),
-            meta: { title: '测试2' },
-            children: [
-              {
-                path: 'view',
-                component: () => import('src/layout/view/index.vue'),
-                meta: { title: '测试3' },
-                children: [
-                  {
-                    path: 'view',
-                    component: () => import('src/layout/view/index.vue'),
-                    meta: { title: '测试4' },
-                    children: [
-                      {
-                        path: '/about',
-                        component: () => import('src/views/about/index.vue'),
-                        meta: { title: 'about' }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    path: '/login',
+    meta: { hidden: true },
+    component: () => import('../views/login/index.vue')
   },
   {
     path: '/:pathMatch(.*)*',
@@ -53,9 +28,15 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
-export const router: Router = createRouter({
+const router: Router = createRouter({
   history: createWebHistory(),
   routes
 })
 
-export { routes }
+export const setupRouter = (app: App) => {
+  setupPermission(router)
+
+  app.use(router)
+}
+
+export default router

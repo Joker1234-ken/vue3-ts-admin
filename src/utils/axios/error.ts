@@ -1,1 +1,3 @@
-export const error = (err: Error) => {}
+export const error = (err: Error) => {
+  throw err
+}

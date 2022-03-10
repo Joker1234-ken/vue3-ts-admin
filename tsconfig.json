@@ -15,7 +15,28 @@
     ],
     "types": [
       "element-plus/global"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@": [
+        "src/*"
+      ],
+      "src": [
+        "src/*"
+      ],
+      "api": [
+        "src/api/*"
+      ],
+      "store": [
+        "src/store"
+      ],
+      "utils": [
+        "src/utils/*"
+      ],
+      "router": [
+        "src/router"
+      ],
+    }
   },
   "include": [
     "src/**/*.ts",

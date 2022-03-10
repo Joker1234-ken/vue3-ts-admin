@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { router } from './router'
-import { setupPermission } from './router/permission'
+import router, { setupRouter } from './router'
+import { setupStore } from './store'
+
 const app = createApp(App)
 
-app.use(router)
+setupRouter(app)
 
-setupPermission(router)
+setupStore(app)
 
 router.isReady().then(() => app.mount('#app'))

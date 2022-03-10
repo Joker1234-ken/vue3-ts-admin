@@ -4,12 +4,18 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'path'
+const resolveDir = dir => resolve(__dirname, dir)
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      src: resolve(__dirname, './src')
+      '@': resolveDir('src'),
+      src: resolveDir('src'),
+      api: resolveDir('src/api'),
+      router: resolveDir('src/router'),
+      store: resolveDir('src/store'),
+      utils: resolveDir('src/utils')
     }
   },
   plugins: [

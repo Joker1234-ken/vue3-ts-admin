@@ -4,6 +4,4 @@ enum url {
   list = '/menu'
 }
 
-export const menuList = () => {
-  return get({ url: url.list })
-}
+export const getMenuList = () => get({ url: url.list })

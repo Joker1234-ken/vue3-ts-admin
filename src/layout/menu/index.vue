@@ -1,38 +1,29 @@
 <template>
-  <el-menu router style="height: 100%">
-    <template v-for="menu in menus">
-      <template v-if="menu.meta && !menu.meta.hidden">
-        <template v-if="!isArray(menu.children)">
-          <el-menu-item :index="menu.path" :key="menu.path">
-            {{ menu.meta.title }}
-          </el-menu-item>
-        </template>
-
-        <template v-else>
-          <SubMenu :menus="menu.children"></SubMenu>
-        </template>
+  <el-aside width="256px">
+    <el-menu
+      router
+      style="height: 100%"
+      unique-opened
+      :default-active="active"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      background-color="#545c64"
+    >
+      <template v-for="menu in routes">
+        <MenuItem v-if="!menu.meta?.hidden" :menu="menu" :key="menu.path" />
       </template>
-    </template>
-  </el-menu>
+    </el-menu>
+  </el-aside>
 </template>
 
 <script setup lang="ts">
-import { RouteRecordRaw } from 'vue-router'
-import SubMenu from './subMenu.vue'
+import { userRouterStore } from 'store'
 
-interface Props {
-  menus: RouteRecordRaw[]
-}
+import MenuItem from './menuItem.vue'
 
-const props = withDefaults(defineProps<Props>(), {
-  menus: () => []
-})
+const { routes } = userRouterStore()
 
-const isArray = (arr: any) => {
-  return Array.isArray(arr) && arr.length > 0
-}
-
-console.log(props)
+const active = computed(() => useRoute().fullPath)
 </script>
 
 <style scoped></style>

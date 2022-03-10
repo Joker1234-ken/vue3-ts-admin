@@ -14,6 +14,12 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'no-console': isProd ? 'warn' : 'off',
-    'no-debugger': isProd ? 'warn' : 'off'
+    'no-debugger': isProd ? 'warn' : 'off',
+    'no-unused-vars': 'off',
+    'no-undef': 'off',
+    'vue/multi-word-component-names': 'off',
+    'space-before-function-paren': 'off',
+    'no-empty': 'off',
+    camelcase: 'off'
   }
 }
